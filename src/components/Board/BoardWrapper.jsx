@@ -1,5 +1,5 @@
 import React from 'react';
-import AppStore from './../../stores/AppStore.js';
+import AppStore from './../../stores/AppStore/AppStore.js';
 import Tile from './Tile.jsx';
 
 
