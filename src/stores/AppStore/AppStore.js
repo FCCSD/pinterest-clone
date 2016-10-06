@@ -1,51 +1,65 @@
-import {
-  EventEmitter
-} from 'events';
+import { EventEmitter } from 'events';
 import dispatcher from './../../dispatcher.js';
 
 class AppStore extends EventEmitter {
   constructor() {
     super();
     this.data = [{
-      user: 'oelias27',
+      id: 1,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/200/300',
       imgTitle: 'Business Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 2,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/450/450',
       imgTitle: 'Surprised Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 3,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/500/500',
       imgTitle: 'Concerned Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 4,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/325/325',
       imgTitle: 'Flowery Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 5,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/200/300',
       imgTitle: 'Business Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 6,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/450/450',
       imgTitle: 'Surprised Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 7,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/500/500',
       imgTitle: 'Concerned Bill Murray',
       likes: 1,
+      liked: false
     }, {
-      user: 'oelias27',
+      id: 8,
+      user: 'Orlando',
       imgUrl: 'http://fillmurray.com/325/325',
       imgTitle: 'Flowery Bill Murray',
       likes: 1,
+      liked: false
     }]
 
   }
@@ -54,12 +68,39 @@ class AppStore extends EventEmitter {
     return this.data;
   }
 
-  handleActions(action) {
-    switch (action.type) {
-      // Actions handlers will go here
+  addLike(id) {
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i].id == id) {
+        if (!this.data[i].liked) {
+          this.data[i].likes += 1;
+          this.data[i].liked = true;
+        }
+        else {
+          this.data[i].likes -= 1;
+          this.data[i].liked = false;
+        }
+      }
     }
+
+    this.emit('change');
   }
 
+  addTile(tile) {
+    this.data.push(tile);
+  }
+
+  handleActions(action) {
+    switch (action.type) {
+      case "ADD_TILE": {
+        this.addTile(action.tile);
+        break;
+      }
+      case "ADD_LIKE": {
+        this.addLike(action.id);
+        break;
+      }
+    }
+  }
 }
 
 // eslint-disable-next-line

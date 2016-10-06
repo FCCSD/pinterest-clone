@@ -5,8 +5,8 @@ class UserStore extends EventEmitter {
   constructor() {
     super();
     this.user = {
-      username: 'oelias27',
-      loggedIn: true,
+      username: 'Orlando',
+      loggedIn: true ,
       userError: ''
     }
   }
