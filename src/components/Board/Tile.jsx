@@ -10,7 +10,8 @@ export default class Tile extends React.Component {
       <div className="tile">
         <div className="tile-img" style={imgStyle}></div>
         <h3 className="tile-title">{this.props.data.imgTitle}</h3>
-        <div className="likes">
+        <h3 className="tile-user">{this.props.data.user}</h3>
+        <div id={'tile-' + this.props.data.id} onClick={this.props.handleClick} className="likes">
           <i className="fa fa-heart"></i>
           <span>{this.props.data.likes}</span>
         </div>
