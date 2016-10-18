@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Tile extends React.Component {
   render() {
@@ -10,7 +11,7 @@ export default class Tile extends React.Component {
       <div className="tile">
         <div className="tile-img" style={imgStyle}></div>
         <h3 className="tile-title">{this.props.data.imgTitle}</h3>
-        <h3 className="tile-user">{this.props.data.user}</h3>
+        <Link to={'/user/' + this.props.data.user}><h3 className="tile-user">{this.props.data.user}</h3></Link>
         <div id={'tile-' + this.props.data.id} onClick={this.props.handleClick} className="likes">
           <i className="fa fa-heart"></i>
           <span>{this.props.data.likes}</span>
