@@ -20,7 +20,7 @@ class AppStore extends EventEmitter {
       liked: false
     }, {
       id: 3,
-      user: 'Orlando',
+      user: 'Bill',
       imgUrl: 'http://fillmurray.com/500/500',
       imgTitle: 'Concerned Bill Murray',
       likes: 1,
@@ -61,10 +61,16 @@ class AppStore extends EventEmitter {
       likes: 1,
       liked: false
     }]
-
   }
 
-  returnData() {
+  returnData(user) {
+    if (user) {
+      let userTiles = this.data.filter((item) => {
+        return item.user === user;
+      })
+      console.log(userTiles)
+      return userTiles;
+    }
     return this.data;
   }
 
