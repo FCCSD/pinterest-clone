@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import './styles/css/main.css';
 
@@ -22,8 +22,10 @@ function PageWrapper(props) {
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path='/' component={PageWrapper}>
+      <IndexRoute component={BoardWrapper}></IndexRoute>
       <Route path='/home' component={BoardWrapper} />
-      <Route path='/user' component={UserWrapper}/>
+      <Route path='/user/:username' component={BoardWrapper} />
+      <Route path='/profile' component={UserWrapper}/>
       <Route path='/login' component={LoginWrapper} />
       <Route path='/add' component={AddWrapper} />
     </Route>
