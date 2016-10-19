@@ -8,7 +8,7 @@ import AddWrapper from './components/AddTile/AddWrapper.jsx';
 import BoardWrapper from './components/Board/BoardWrapper.jsx';
 import NavBar from './components/Nav/NavBar.jsx';
 import LoginWrapper from './components/Login/LoginWrapper.jsx';
-import UserWrapper from './components/User/UserWrapper.jsx';
+import ProfileWrapper from './components/Profile/ProfileWrapper.jsx';
 
 function PageWrapper(props) {
   return (
@@ -25,7 +25,7 @@ ReactDOM.render((
       <IndexRoute component={BoardWrapper}></IndexRoute>
       <Route path='/home' component={BoardWrapper} />
       <Route path='/user/:username' component={BoardWrapper} />
-      <Route path='/profile' component={UserWrapper}/>
+      <Route path='/profile' component={ProfileWrapper}/>
       <Route path='/login' component={LoginWrapper} />
       <Route path='/add' component={AddWrapper} />
     </Route>
