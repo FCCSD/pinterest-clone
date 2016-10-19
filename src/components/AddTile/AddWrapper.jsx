@@ -7,7 +7,7 @@ export default class AddWrapper extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: 'Orlando',
+      user: 'Orlando',
       imgUrl: '',
       imgTitle: '',
       likes: 1

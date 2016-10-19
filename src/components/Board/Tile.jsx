@@ -7,6 +7,17 @@ export default class Tile extends React.Component {
       backgroundImage: 'url(' + this.props.data.imgUrl + ')'
     }
 
+    let showAuthControls = function() {
+      if (this.props.isAuth) {
+        return (
+          <button className="delete-tile" onClick={this.props.handleClick}>Delete</button>
+        )
+      }
+      else {
+        return null;
+      }
+    }.bind(this)
+
     return (
       <div className="tile">
         <div className="tile-img" style={imgStyle}></div>
@@ -16,6 +27,7 @@ export default class Tile extends React.Component {
           <i className="fa fa-heart"></i>
           <span>{this.props.data.likes}</span>
         </div>
+        {showAuthControls()}
       </div>
     );
   }

@@ -20,7 +20,7 @@ export default class NavBar extends React.Component {
         <div className="nav-menu">
           <span></span>
         </div>
-        <div className="nav-user"><Link to="/user"><i className="fa fa-user fa-2x"></i></Link></div>
+        <div className="nav-user"><Link to="/profile"><i className="fa fa-user fa-2x"></i></Link></div>
         <div className="nav-notifications"><i className="fa fa-bell fa-2x"></i></div>
       </div>
     );

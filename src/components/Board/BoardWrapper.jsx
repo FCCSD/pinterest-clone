@@ -14,40 +14,36 @@ export default class BoardWrapper extends React.Component {
 
   }
 
-  componentWillMount() {
-    AppStore.on('change', () => {
-      this.setState({
-        data: AppStore.returnData()
-      });
-    });
-  }
-
-  componentWillReceiveProps() {
-    console.log('props recieved')
-    if (this.props.params.username) {
-      this.setState({
-        data: AppStore.returnData(this.props.params.username)
-      })
-    }
-    else(
-      this.setState({
-        data: AppStore.returnData()
-      })
-    )
-  }
-
   handleClick(e) {
     let tileId = e.target.id.substring(e.target.id.indexOf('-') + 1, e.target.id.length);
     AppActions.addLike(tileId)
   }
 
   render() {
+    let getData = function(){
+      if (this.props.params !== undefined) {
+        return AppStore.returnData(this.props.params.username)
+      }
+      else if (this.props.user !== undefined) {
+        return AppStore.returnData(this.props.user)
+      }
+      else {
+        return AppStore.returnData();
+      }
+    }.bind(this)
 
+    let showAuthControls = function() {
+      if (this.props.isAuth) {
+        return true
+      }
+      else {
+        return false
+      }
+    }.bind(this)
 
     return (
       <div className="board">
-        {this.props.children}
-        <Board data={this.state.data} handleClick={this.handleClick.bind(this)} />
+        <Board data={getData()} handleClick={this.handleClick.bind(this)} isAuth={showAuthControls()} />
       </div>
     )
   }
