@@ -68,7 +68,6 @@ class AppStore extends EventEmitter {
       let userTiles = this.data.filter((item) => {
         return item.user === user;
       })
-      console.log(userTiles)
       return userTiles;
     }
     return this.data;
